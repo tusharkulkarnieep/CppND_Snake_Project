@@ -40,7 +40,8 @@ This is the Capstone project in the [Udacity C++ Nanodegree Program](https://www
 * One additional feature has been added for the `Game::PlaceFood()` method to function correctly. In the `main()` function, the all maze boundaries are stored in four int         variables and sent to the `Game` class object. The random number generator uses these variables as the upper and lower limits to generate random places for the food. With       this, it is made sure that the food is placed inside the maze area.
   
 ## `renderer.h` and `renderer.cpp` 
-* These files define the Renderer class which uses the [SDL library](https://www.libsdl.org/) to render the game to the screen. The `Renderer::Render()` method draws the food, the snake and the maze in the window using the SDL renderer.
+* These files define the Renderer class which uses the [SDL library](https://www.libsdl.org/) to render the game to the screen. The `Renderer::Render()` method draws the food,     the snake and the maze in the window using the SDL renderer.
+* The `Renderer::UpdateWindowTitle()` method shows the user score, available lives and the frames per seconds as the window title.
 
 ## `controller.h` and `controller.cpp`
 * These files define the Controller class. This class handles keyboard input using the SDL libary, and it sets the snake's direction based on the input.
@@ -66,3 +67,33 @@ This is the Capstone project in the [Udacity C++ Nanodegree Program](https://www
 2. Make a build directory in the top level directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
 4. Run it: `./SnakeGame`.
+
+# Project Rubrics Met
+
+## 1. Object Oriented Programming: The project uses Object Oriented Programming techniques.
+* The program introduced two additional classes `Userio`, to handle user input and `Mazes` to create maze walls in the game. These are with class attributes to hold the data, and class methods to perform tasks.
+
+## 2. Object Oriented Programming: Classes use appropriate access specifiers for class members.
+* All class data members are explicitly specified as public or private.
+  * `Userio` [private](https://github.com/tusharkulkarnieep/CppND_Snake_Project/blob/4179f3c20443e5563e3c92ac188cd6ef85c5155e/src/userio.h#L12) and [public](https://github.com/tusharkulkarnieep/CppND_Snake_Project/blob/4179f3c20443e5563e3c92ac188cd6ef85c5155e/src/userio.h#L8) data members. 
+               
+  * `Mazes` [public](https://github.com/tusharkulkarnieep/CppND_Snake_Project/blob/4179f3c20443e5563e3c92ac188cd6ef85c5155e/src/mazes.h#L19) and [private](https://github.com/tusharkulkarnieep/CppND_Snake_Project/blob/4179f3c20443e5563e3c92ac188cd6ef85c5155e/src/mazes.h#L36) data members.
+
+## 3. Object Oriented Programming: Class constructors utilize member initialization lists.
+* All class members that are set to argument values are initialized through member initialization lists.
+  * `Mazes` : [Initialization list](https://github.com/tusharkulkarnieep/CppND_Snake_Project/blob/4179f3c20443e5563e3c92ac188cd6ef85c5155e/src/mazes.cpp#L8) 
+
+## 4. Object Oriented Programming: Classes abstract implementation details from their interfaces.
+* All class member functions document their effects, either through function names, comments, or formal documentation. Member functions do not change program state in             undocumented ways.
+  * `Userio` : [Comments](https://github.com/tusharkulkarnieep/CppND_Snake_Project/blob/4179f3c20443e5563e3c92ac188cd6ef85c5155e/src/userio.h#L9-L10) in short about what the
+    functions do.
+  * `Mazes` : example [comment](https://github.com/tusharkulkarnieep/CppND_Snake_Project/blob/4179f3c20443e5563e3c92ac188cd6ef85c5155e/src/mazes.h#L24)
+
+## 5. Object Oriented Programming: Classes encapsulate behavior.
+* In class `Mazes`, appropriate data and functions are grouped into classes. The [SDL_Point type variables](https://github.com/tusharkulkarnieep/CppND_Snake_Project/blob/4179f3c20443e5563e3c92ac188cd6ef85c5155e/src/mazes.h#L38) used to create maze walls are hidden from the user.       In class `Game`, the state of the snake touching the maze is accessed via member function [`Game::SnakeTouchesMaze()`](https://github.com/tusharkulkarnieep/CppND_Snake_Project/blob/4179f3c20443e5563e3c92ac188cd6ef85c5155e/src/game.cpp#L154)
+
+## 6: Loops, Functions, I/O
+* I/O : `Userio` class handles the I/O for the project. Methods [`Userio::TakeUserLevel()`](https://github.com/tusharkulkarnieep/CppND_Snake_Project/blob/4179f3c20443e5563e3c92ac188cd6ef85c5155e/src/userio.cpp#L4) and [`Userio::TakeUserSpeed()`](https://github.com/tusharkulkarnieep/CppND_Snake_Project/blob/4179f3c20443e5563e3c92ac188cd6ef85c5155e/src/userio.cpp#L18)
+* Loops : [Example](https://github.com/tusharkulkarnieep/CppND_Snake_Project/blob/4179f3c20443e5563e3c92ac188cd6ef85c5155e/src/game.cpp#L120) in `Game` class.
+        : [Example](https://github.com/tusharkulkarnieep/CppND_Snake_Project/blob/4179f3c20443e5563e3c92ac188cd6ef85c5155e/src/mazes.cpp#L59) in `Maze` Class
+* Functions: [Example](https://github.com/tusharkulkarnieep/CppND_Snake_Project/blob/4179f3c20443e5563e3c92ac188cd6ef85c5155e/src/mazes.cpp#L52) Function that is called inside     the [`Game`](https://github.com/tusharkulkarnieep/CppND_Snake_Project/blob/4179f3c20443e5563e3c92ac188cd6ef85c5155e/src/game.cpp#L36) class, before the game loop starts, to     create the maze depending upon the user level.
